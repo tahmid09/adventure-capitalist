@@ -1,0 +1,200 @@
+
+
+.businessCard {
+  padding: 14px 0;
+}
+
+.business-inner {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.business-inner.last {
+  width: 60%;
+  text-align: center;
+  background: aliceblue;
+  border-radius: 4px;
+  height: 30px;
+}
+.business-inner.last p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.business-down-inner.first {
+  width: 50%;
+  background: antiquewhite;
+}
+.business-down-inner.last {
+  width: 30%;
+  background-color: gainsboro;
+}
+
+.business-down-inner.first {
+  width: 50%;
+}
+.business-down-inner.first.inactive{
+  background: antiquewhite;
+}
+.business-down-inner.first.activeted{
+  background: darkorange;
+  cursor: pointer;
+}
+
+.business-down-inner.last {
+  width: 30%;
+  background-color: gainsboro;
+}
+
+.business-down {
+  margin-top: 10px;
+}
+
+.business-down-inner {
+  display: inline-block;
+  padding: 6px 20px;
+  margin: 0 5px;
+  border-radius: 10px;
+}
+.business-down-inner p {
+  margin-bottom: 0;
+}
+
+.business-down-inner.first p {
+  display: inline-block;
+}
+
+p.down-inner-p {
+  float: right;
+}
+
+.business-down-inner.last {
+  text-align: center;
+}
+
+.buy-please {
+  text-align: center;
+  border-radius: 5px;
+  width: 80%;
+  margin: auto;
+}
+.buy-please.deactive {
+  background: gainsboro;
+}
+.buy-please.active {
+  background: chocolate;
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+.buy-please p {
+  margin-bottom: 0;
+}
+.buy-please p:first-child {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+.buy-please p:last-child {
+  font-size: 14px;
+  padding-bottom: 4px;
+  font-family: emoji;
+}
+p.quantityPurchased {
+  text-align: center;
+  background-color: coral;
+  color: darkred;
+  border-radius: 36%;
+  margin-top: -4px;
+  transform: rotate(-3deg);
+  font-family: cursive;
+  box-shadow: 1px 1.5px 3px #f48156;
+}
+
+.customSidebar ul.ant-menu.ant-menu-root {
+  margin-top: 40%;
+}
+
+.managersCard .ant-card {
+  padding: 18px 45px;
+  text-align: center;
+}
+
+.managersCard p {
+  margin-bottom: 0;
+}
+
+
+.managersCard p:first-child {
+  font-size: 24px;
+  font-weight: 900;
+  font-family: system-ui;
+  color: #444;
+  margin-bottom: -11px;
+}
+
+.managersCard .ant-card-body {
+  border-radius: 7px;
+  padding: 4px 2px;
+}
+
+.managersCard .ant-card-body span {
+  font-size: 12px !important;
+  font-family: monospace;
+  text-transform: lowercase;
+}
+
+.managersCard p:last-child {
+  font-size: 14px;
+  font-weight: 900;
+  color: #555;
+}
+
+
+.managersCard.inactive .ant-card .ant-card-body {
+  background-color: darkgrey;
+  -webkit-box-shadow: 0px 1px 7px 2px rgba(0,0,0,0.36); 
+  box-shadow: 0px 1px 7px 2px rgba(0,0,0,0.36);
+}
+
+.managersCard.active .ant-card .ant-card-body {
+  cursor: pointer;
+  background-color: coral;
+  -webkit-box-shadow: 0px 4px 17px 4px rgb(255 210 140 / 36%);
+  box-shadow: 0px 4px 17px 4px rgb(255 210 140 / 36%);
+}
+
+.ant-skeleton-title {
+  height: 40px !important;
+}
+ul.ant-skeleton-paragraph li {
+  height: 40px !important;
+}
+
+.slide-animation {
+  position: relative;
+  background-color: aqua;
+  margin-top: -31px;
+  height: 100%;
+  left: -8px;
+  width: 107%;
+  opacity: 0;
+  border-radius: 4px;
+}
+
+h2.totalprofitClass {
+  font-family: cursive;
+  font-weight: 900;
+  font-size: 30px;
+  color: #666;
+}
+
+.business-inner button {
+  z-index: 99;
+  box-shadow: 1.5px 1px 3px rgb(199 23 23 / 66%) !important;
+  border-radius: 50%;
+    transform: rotate(-18deg);
+}
