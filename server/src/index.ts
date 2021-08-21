@@ -1,4 +1,3 @@
-//import express from 'express'
 import express from 'express';
 const http = require('http');
 const path = require('path');
@@ -6,7 +5,6 @@ import bodyParser from 'body-parser';
 import cors from 'cors'
 import mongoose from 'mongoose';
 
-//import Business from './model/business'
 let { User } = require('./model/user');
 
 mongoose.connect('mongodb+srv://businessDB:businessDB@cluster0.v8ztv.mongodb.net/adventure_capitalist', { useCreateIndex: true,useNewUrlParser: true,useUnifiedTopology: true });
@@ -24,7 +22,6 @@ db.on('error', function(err){
 const app = express();
 app.use(bodyParser.json());// to support JSON-encoded bodies
 app.use(cors());
-//app.use(currentuserRouter);
 
 
 app.get('/', (req, res) => {
@@ -34,11 +31,6 @@ app.get('/', (req, res) => {
 
 
 app.post('/business_data', async (req, res) => {
-//  console.log(req)
-// let user = new Business(req.body, ['businessdata', 'total_profiet']);
-// const result = await user.save().catch( () => {} );
-// const result = await User.create(req.body).catch( () => {} );
-
 
  const result = await User.update( { token : req.body.token }, req.body, { upsert : true }).catch( () => {} );
 
@@ -65,7 +57,6 @@ app.post('/calculate_capital', async (req, res) => {
       }
     })
     let total_profit = Number(last_profit) + Number(gapetime_profit)
-    console.log(total_profit)
     result.total_profiet = total_profit.toString()
     res.send(result);  
 

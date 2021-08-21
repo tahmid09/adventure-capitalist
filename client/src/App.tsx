@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-
-import './App.css';
 import 'antd/dist/antd.css';
-
-
-import { Layout, Menu, Breadcrumb } from 'antd';
-
-
+import './App.css';
+import { Layout } from 'antd';
 import Sidebar from './components/Sidebar'
 import Home from './components/Home'
 
@@ -18,8 +12,7 @@ interface IState {
   collapsed: boolean;
 }
 
-
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 
 class App extends Component<IProps, IState> {
@@ -31,8 +24,6 @@ class App extends Component<IProps, IState> {
     };
     
   }
-
-
 
   componentDidUpdate(prevProps: any, prevState: any) { 
 
@@ -46,19 +37,15 @@ class App extends Component<IProps, IState> {
  
     return (
       <Layout style={{ minHeight: '100vh' }}>
-           <Sidebar/>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
-        <Header className="site-layout-background" style={{ padding: 0 }} />
-        <Content style={{ margin: '0 16px' }}>
-          {/* <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb> */}
-          <Home/>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Sidebar/>
+        <Layout className="site-layout siteMailLayout" >
+          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Content style={{ margin: '0 16px' }}>
+            <Home/>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        </Layout>
       </Layout>
-    </Layout>
     );
 
  }

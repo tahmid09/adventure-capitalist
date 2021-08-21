@@ -66,13 +66,12 @@ export const  sellproductsAction = (param: BusinessData) => {
 	let current_state: StateInterface = store.getState()
 	let businessdata = current_state.gaming.business;
 	let managersdata = current_state.gaming.managers;
-	let businessId = param.id;
 	
 	let profit = param.profit;
 	let quantityPurchased = param.quantityPurchased;
 	let total_profiet = Number(current_state.gaming.total_profiet) + ( Number(profit) * Number(quantityPurchased) );
 	
-	Object.values(businessdata).map( (element) => {
+	Object.values(businessdata).forEach( (element) => {
 		if( Number(total_profiet) >= Number(element.price) && element.isbuy === false){
 			element.active = true
 		}
@@ -97,7 +96,7 @@ export const  purchasenewbusiness = (param: BusinessData) => {
 	let quantityPurchased = 1;
 	let total_profiet = Number(current_state.gaming.total_profiet) - (Number(price) * Number(quantityPurchased));
 	
-	Object.values(businessdata).map( (element) => {
+	Object.values(businessdata).forEach( (element) => {
 
 		if(element.id === businessId) {
             element.isbuy = true;
@@ -126,8 +125,7 @@ export const  upgradebusiness = (param: BusinessData) => {
 	let quantityPurchased = param.quantityPurchased
 
 	let total_profiet = Number(current_state.gaming.total_profiet) - Number(param.price);
-	console.log(businessdata, total_profiet, 'wdwdwdwdwdwdwdwdwdwdwdwdwdwdwdwdwdw' )
-	Object.values(businessdata).map( (element) => {
+	Object.values(businessdata).forEach( (element) => {
         if(element.id === businessId) {
 			element.quantityPurchased = Number(quantityPurchased) + 1
 		}	
@@ -148,12 +146,12 @@ export const  hireManager = (param: ManagerData) => {
 	let managersdata = current_state.gaming.managers;
     let businessId = param.businessId;
 	let total_profiet = Number(current_state.gaming.total_profiet) - Number(param.price);
-	Object.values(businessdata).map( (element) => {
+	Object.values(businessdata).forEach( (element) => {
        if(element.id === businessId) {
 		   element.hasManager = true;
 	   }
 	})	
-	Object.values(managersdata).map( (element) => {
+	Object.values(managersdata).forEach( (element) => {
 		if(element.businessId === businessId) {
 			element.ishired = true;
 		}
@@ -180,7 +178,6 @@ export const checkCapital = ( ) => {
 				token: isCookie,
 			})
 			.then(response => {
-				console.log(response, 'response');
 				let data = response.data
 				dispatch(startWithCalculateCapital(data.business, data.managers, data.total_profiet))
 				
@@ -196,21 +193,20 @@ export const checkCapital = ( ) => {
 }
 
 const sendDataServer = async ( token: string ,business: BusinessData, managers: ManagerData, total_profiet: number) => {
-     console.log(business, total_profiet, 'hhhhhhhhhhhhhhhhhhh')
-        let api_url = ROOT_URL + '/business_data'; 
-		await  axios.post(api_url, {
-			token: token,
-			business: business,
-			managers: managers,
-			total_profiet: (total_profiet).toString(),
-			time: (new Date().getTime()).toString()
-		})
-		.then(function (response) {
-			console.log(response, 'response');
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
+	let api_url = ROOT_URL + '/business_data'; 
+	await  axios.post(api_url, {
+		token: token,
+		business: business,
+		managers: managers,
+		total_profiet: (total_profiet).toString(),
+		time: (new Date().getTime()).toString()
+	})
+	.then(function (response) {
+		console.log(response, 'response');
+	})
+	.catch(function (error) {
+		console.log(error);
+	});
 }
 
 
@@ -225,19 +221,18 @@ const getCookie = (cookieName: string) => {
     let ca = document.cookie.split(';');
     for(let i=0;i < ca.length;i++) {
         let c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        while (c.charAt(0)===' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
     }
     return '0';
 }
 
 const getORsetCookie = (cookieName: string, cookieValue: string) => {
 	let isCookie = getCookie(cookieName); 
-	if( isCookie == '0') {
+	if( isCookie === '0') {
 		createCookieInHour(cookieName, cookieValue)
 		isCookie = cookieValue
 	} 
-	console.log(isCookie)
 	return isCookie;
 }
 

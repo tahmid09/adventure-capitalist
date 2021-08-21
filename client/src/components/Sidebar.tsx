@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Modal } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
-    UserOutlined,
   } from '@ant-design/icons';
 
 import Managers from './Managers'
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const {  Sider } = Layout;
+
 interface IProps {
+
 }
 
 interface IState {
-    collapsed: boolean;
-    loading: boolean;
-    visible: boolean;
-  }
+  collapsed: boolean;
+  loading: boolean;
+  visible: boolean;
+}
 
 class Sidebar extends Component<IProps, IState> {
     constructor(props: IProps) {
@@ -35,8 +33,7 @@ class Sidebar extends Component<IProps, IState> {
 
 
     onCollapse = (collapsed:boolean ) => {
-    console.log(collapsed);
-    this.setState({ collapsed });
+      this.setState({ collapsed });
     };
 
     showModal = () => {
@@ -55,26 +52,33 @@ class Sidebar extends Component<IProps, IState> {
     render() {
         const { collapsed } = this.state;
         return (
-                <>
-                    <Sider   style={{
-                        overflow: 'auto',
-                        height: '100vh',
-                        position: 'fixed',
-                        left: 0,
-                      }} collapsible collapsed={collapsed} onCollapse={this.onCollapse} className="customSidebar">
-                        <div className="logo" />
-                        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" icon={<PieChartOutlined />}>
-                           Upgrades
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<DesktopOutlined />} onClick={this.showModal} >
-                           Managers
-                        </Menu.Item>
+            <>
+              <Sider 
+                breakpoint="lg"
+                collapsedWidth="50"
+                style={{
+                  overflow: 'auto',
+                  height: '100vh',
+                  position: 'fixed',
+                  left: 0,
+                }}
+                      
+                onBreakpoint={broken => {
+                }}
+                collapsed={collapsed} onCollapse={this.onCollapse} className="customSidebar">
+                <div className="logo" />
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                  <Menu.Item key="1" icon={<PieChartOutlined />}>
+                      Upgrades
+                  </Menu.Item>
+                  <Menu.Item key="2" icon={<DesktopOutlined />} onClick={this.showModal} >
+                      Managers
+                  </Menu.Item>
                        
-                        </Menu>
-                    </Sider>
-                    <Managers visible={this.state.visible} parentCallback = {this.handleCallback} />
-                </>    
+                </Menu>
+              </Sider>
+              <Managers visible={this.state.visible} parentCallback = {this.handleCallback} />
+            </>    
         );
     }
 }

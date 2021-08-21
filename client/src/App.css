@@ -198,3 +198,17 @@ h2.totalprofitClass {
   border-radius: 50%;
     transform: rotate(-18deg);
 }
+
+
+@media screen and (min-width: 992px) {
+  .siteMailLayout {
+  margin-left: 200px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .siteMailLayout {
+  margin-left: 50px;
+  }
+}
+
+

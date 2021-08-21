@@ -11,13 +11,10 @@ interface IProps {
     skeleton: boolean;
     checkCapital: any
 }
-
-
-
 interface IState {
     business: BusinessData;
     loading: boolean;
-  }
+}
 
 class Home extends Component<IProps, IState> {
     constructor(props: IProps) {
@@ -38,16 +35,16 @@ class Home extends Component<IProps, IState> {
         if(previousProps.total_profiet !== this.props.total_profiet){ 
             this.setState({
                 business: this.props.business	
-               }) 
-         }
+            }) 
+        }
          
-         if(this.state.loading) {
+        if(this.state.loading) {
             this.setState({
                 loading: this.props.skeleton	
-               }) 
-         }
+            }) 
+        }
 
-     }
+    }
   
 
     render() {

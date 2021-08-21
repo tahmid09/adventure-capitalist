@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Card, Col, Row  } from 'antd';
+import { Modal, Card, Col, Row  } from 'antd';
 import { connect } from 'react-redux';
 import { hireManager  } from '../store'
 import { ManagerData } from '../store/data/managersType'
@@ -57,62 +57,53 @@ class Managers extends Component<IProps, IState> {
     handleCancel = () => {
         this.setState({ visible: false });
         this.props.parentCallback(false);
-      };
+    };
      
-      hairedAmanagers = (e:any, manager: ManagerData) => {
-     //   let data = event.target.parentNode.getAttribute("id")
+    hairedAmanagers = (e:any, manager: ManagerData) => {
         if(this.props.total_profiet >= manager.price) {
-            console.log(manager, 'ssssssssssssss');
-            console.log(manager.businessId, 'ssssssssssssss');
             this.props.hireManager(manager)
             this.setState({ visible: false });
             this.props.parentCallback(false);
         }
-      }
+    }
 
     render() {
-        const { visible, loading } = this.state;
+        const { visible } = this.state;
         return (
             <Modal
-                    visible={visible}
-                  
-                  
-                    onCancel={this.handleOk}
-                    footer={[
+                visible={visible}
+                onCancel={this.handleOk}
+                footer={[
+                ]}
+            >
                        
-                      ]}
-                    >
-                       
-                   <Row justify="space-around" gutter={24}>
-                        {
-                            Object.values(this.state.managers).map( (manager, index) => {
+                <Row justify="space-around" gutter={24}>
+                    {
+                        Object.values(this.state.managers).map( (manager, index) => {
 
-                                const managerCardClass = (this.props.total_profiet >= manager.price) ? 'managersCard active' : 'managersCard inactive';
-                                if(!manager.ishired) {
-                                    return (
-                                      
-                                            <Col span={24}   className={managerCardClass}  key={manager.businessId} id={manager.businessId}  onClick={((e) => this.hairedAmanagers(e, manager))}>
-                                                <Card bordered={false} >
-                                                    <p>{manager.name}</p>
-                                                    <span>{manager.description}</span>
-                                                    <p>{manager.price}</p>  
-                                                </Card>
-                                            </Col>  
-                                     
+                            const managerCardClass = (this.props.total_profiet >= manager.price) ? 'managersCard active' : 'managersCard inactive';
+                            if(!manager.ishired) {
+                                return (
                                     
-                                    )
-                                }
-                            })
+                                    <Col span={24}   className={managerCardClass}  key={manager.businessId} id={manager.businessId}  onClick={((e) => this.hairedAmanagers(e, manager))}>
+                                        <Card bordered={false} >
+                                            <p>{manager.name}</p>
+                                            <span>{manager.description}</span>
+                                            <p>{manager.price}</p>  
+                                        </Card>
+                                    </Col>  
+                                    
+                                
+                                )
+                            }
+                        })
 
-                        }
-                    </Row>
+                    }
+                </Row>
             </Modal>
         )
 
     }
-
-
-
 }
 
 const mapStateToProps = (state: any) => {
