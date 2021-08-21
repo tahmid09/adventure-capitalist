@@ -91,7 +91,7 @@ class Business extends Component<IProps, IState> {
         let keyframes =
         `@-webkit-keyframes ${animationName} {
             0%   {background-color:yellow; width:0%; opacity: .3;}
-            100%  {background-color:red; width:107%; opacity: .9;}
+            100%  {background-color:red; width:107%; opacity: .7;}
         }`;
         styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
     

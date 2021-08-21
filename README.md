@@ -23,10 +23,10 @@
 
 
 ### Client
-Client is a **React**, **React-Redux** and **Ant Design of React** 
+Client is a **React**, **TypeScript**, **React-Redux** and **Ant Design of React** 
 
 ### Server
-Server is a **Node.js** with **Express** server.
+Server is a **Node.js**, ****TypeScript**** with **Express** server.
 
 ### Database
 Server uses a **MongoDB** database. host data in  https://www.mongodb.com/ 

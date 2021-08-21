@@ -1,6 +1,4 @@
 import express from 'express';
-const http = require('http');
-const path = require('path');
 import bodyParser from 'body-parser';
 import cors from 'cors'
 import mongoose from 'mongoose';
@@ -31,11 +29,8 @@ app.get('/', (req, res) => {
 
 
 app.post('/business_data', async (req, res) => {
-
- const result = await User.update( { token : req.body.token }, req.body, { upsert : true }).catch( () => {} );
-
+  const result = await User.update( { token : req.body.token }, req.body, { upsert : true }).catch( () => {} );
   res.send(result);
-  
 })
 
 app.post('/calculate_capital', async (req, res) => { 
@@ -61,32 +56,6 @@ app.post('/calculate_capital', async (req, res) => {
     res.send(result);  
 
 })
-
-
-app.get('/business_data_get', async (req, res) => {
-  const result = await User.findOne({'token': 'G3zIZQVUkHZB5YupCH'}).catch( () => {} );
- //   let result = await User.find({'token': 'G3zIZQVUkHZB5YupCH'});
-    if (!result) return res.status(400).send('user already register.');
-
-    let lasttime = Number(result.time);
-    let timenow = new Date().getTime(); 
-    let time_diff =  Math.floor( (timenow - lasttime) / 1000 ); /// sec
-    let last_profit =  result.total_profiet;
-    let business_data: BusinessData = result.business
-   let gapetime_profit = 0
-   Object.values(business_data).map( element => {
-     if(element.hasManager) {
-        let gap_time =  Math.floor( time_diff / Number(element.timeTaken))
-        gapetime_profit += ( gap_time  * element.profit * element.quantityPurchased )
-     }
-   })
-   let total_profit = Number(last_profit) + Number(gapetime_profit)
-   console.log(total_profit)
-   result.total_profiet = total_profit.toString()
-    res.send(result);
-   //res.send((total_profit).toString());
-  })
-
 
 
 app.listen(3001, () => { console.log('Example app listening on port 3001!') })
