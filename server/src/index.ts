@@ -5,7 +5,15 @@ import mongoose from 'mongoose';
 
 let { User } = require('./model/user');
 
-mongoose.connect('mongodb+srv://businessDB:businessDB@cluster0.v8ztv.mongodb.net/adventure_capitalist', { useCreateIndex: true,useNewUrlParser: true,useUnifiedTopology: true });
+const dotenv = require('dotenv');
+dotenv.config();
+
+const BD_USER = process.env.BD_USER
+const BD_PASS = process.env.BD_PASS
+
+
+mongoose.connect(`mongodb+srv://${BD_USER}:${BD_PASS}@cluster0.v8ztv.mongodb.net/adventure_capitalist`, { useCreateIndex: true,useNewUrlParser: true,useUnifiedTopology: true });
+
 let db = mongoose.connection;
 //Check Connection
 db.once('open', function(){
@@ -29,13 +37,13 @@ app.get('/', (req, res) => {
 
 
 app.post('/business_data', async (req, res) => {
-  const result = await User.update( { token : req.body.token }, req.body, { upsert : true }).catch( () => {} );
+  const result = await User.updateOne( { token : req.body.token }, req.body, { upsert : true }).catch( () => {} );
   res.send(result);
 })
 
 app.post('/calculate_capital', async (req, res) => { 
 
-    const result = await User.findOne({'token': req.body.token}).catch( () => {} );
+    const result = await User.findOne({'token': req.body.token});
     
     if (!result) return res.status(400).send('user already register.');
 
@@ -58,7 +66,8 @@ app.post('/calculate_capital', async (req, res) => {
 })
 
 
-app.listen(3001, () => { console.log('Example app listening on port 3001!') })
+
+app.listen(process.env.PORT, () => { console.log('Example app listening on port 3001!') })
 
 
 export interface BusinessData {

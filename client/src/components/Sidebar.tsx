@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import {
-    DesktopOutlined,
-    PieChartOutlined,
+   UserSwitchOutlined,
   } from '@ant-design/icons';
 
 import Managers from './Managers'
@@ -68,10 +67,7 @@ class Sidebar extends Component<IProps, IState> {
                 collapsed={collapsed} onCollapse={this.onCollapse} className="customSidebar">
                 <div className="logo" />
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                  <Menu.Item key="1" icon={<PieChartOutlined />}>
-                      Upgrades
-                  </Menu.Item>
-                  <Menu.Item key="2" icon={<DesktopOutlined />} onClick={this.showModal} >
+                  <Menu.Item key="2" icon={<UserSwitchOutlined />} onClick={this.showModal} >
                       Managers
                   </Menu.Item>
                        

@@ -173,8 +173,8 @@ export const checkCapital = ( ) => {
 		}	
 	}  else {
 		let api_url = ROOT_URL + '/calculate_capital'; 
-		return (dispatch: any) => {
-			axios.post(api_url, {
+		return async (dispatch: any) => {
+		await	axios.post(api_url, {
 				token: isCookie,
 			})
 			.then(response => {
