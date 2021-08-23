@@ -27,9 +27,9 @@ open http://localhost:3000
 ### Database Setup
 
 1. cd server 
-2. Open .env set DB user and Password
-BD_USER = 
-BD_PASS = 
+2. Open .env and set DB user and Password
+**BD_USER =**
+**BD_PASS =** 
 
 
 
