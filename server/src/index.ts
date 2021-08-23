@@ -8,11 +8,10 @@ let { User } = require('./model/user');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const BD_USER = process.env.BD_USER
-const BD_PASS = process.env.BD_PASS
+const DBLINK = process.env.DBLINK
 
 
-mongoose.connect(`mongodb+srv://${BD_USER}:${BD_PASS}@cluster0.v8ztv.mongodb.net/adventure_capitalist`, { useCreateIndex: true,useNewUrlParser: true,useUnifiedTopology: true });
+mongoose.connect(`${DBLINK}`, { useCreateIndex: true,useNewUrlParser: true,useUnifiedTopology: true });
 
 let db = mongoose.connection;
 //Check Connection
