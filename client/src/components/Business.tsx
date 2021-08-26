@@ -191,13 +191,14 @@ class Business extends Component<IProps, IState> {
 
     
     purchaseBusness = (event: any) => {
+        if(this.props.total_profiet >= this.state.business.price) {
         let update_bus = this.state.business
         update_bus.isbuy = true
         this.setState({
             business: update_bus	
         }) 
         this.props.purchasenewbusiness(this.state.business)
-       
+        }
     }
 
     upgradeBusines = () => {
